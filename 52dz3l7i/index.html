@@ -1,0 +1,54 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to my landing page!!!!</title>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        margin: 0; padding: 0;
+        background: #f9f9f9;
+      }
+      img {
+        max-width: 90%;
+        margin: 20px 0;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+      button {
+        background-color: #222;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 24px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.2s;
+      }
+      button:hover { background-color: #444; }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to my landing page!!!!</h1>
+    <img src="https://www.boredpanda.com/blog/wp-content/uploads/2023/04/644a23fb30bec_wkus5oaje7ea1__700.jpg" alt="Landing Page Image">
+    <button id="cta">Jetzt starten</button>
+
+    <script>
+      document.getElementById('cta').addEventListener('click', () => {
+        fetch('https://animediq.app.n8n.cloud/webhook/button%20click', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            url: window.location.href,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent
+          })
+        });
+      });
+    </script>
+  </body>
+  </html>
+  
