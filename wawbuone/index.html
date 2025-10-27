@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Landing Page</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f9f9f9;
+      color: #222;
+    }
+    .container { text-align: center; }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      background-color: #0070f3;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #0059c1;
+    }
+  </style>
+
+  <!-- 👇 Umami tracking script -->
+  <script async src="https://us.umami.is/script.js" data-website-id="8b77927f-faae-4de2-b67a-ebe59df2c963"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to my landing page!!!!</h1>
+    <img src="https://www.boredpanda.com/blog/wp-content/uploads/2023/04/644a23fb30bec_wkus5oaje7ea1__700.jpg" alt="Landing Page Image">
+
+    <!-- 👇 Button tracked as a custom event -->
+    <button onclick="umami.track('CTA Click')">Click Me</button>
+  </div>
+</body>
+</html>
