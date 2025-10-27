@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>NeuroBlue — Mobile</title>
+  <meta name="description" content="Mobile-optimized one-pager. All images 1:1." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#06080f; --bg-2:#0b1220; --text:#F2F6FF; --muted:#A7B4D6;
+      --primary:#1e9bff; --primary-2:#5cc3ff; --card:#0c1424;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,.45),0 0 60px rgba(30,155,255,.08);
+      --radius:16px;
+      --space:16px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--text);
+      background:
+        radial-gradient(800px 500px at 70% -20%, rgba(30,155,255,.18), transparent 60%),
+        radial-gradient(600px 400px at -10% 30%, rgba(92,195,255,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      line-height:1.6;
+    }
+    a{color:var(--primary); text-decoration:none}
+    .wrap{max-width:420px; margin:0 auto; padding:0 14px}
+    header.nav{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(6,8,15,.9), rgba(6,8,15,.6));
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; font-size:15px}
+    .brand .dot{width:12px; height:12px; border-radius:50%; background:radial-gradient(circle at 35% 35%, var(--primary-2), var(--primary)); box-shadow:0 0 12px rgba(30,155,255,.9)}
+    .nav a.btn{padding:10px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px}
+
+    /* Sections */
+    .section{padding:28px 0; border-bottom:1px solid var(--border)}
+    .hero{padding:36px 0 28px}
+    .eyebrow{color:var(--primary-2); font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase}
+    h1{font-size: clamp(26px, 6.5vw, 30px); line-height:1.15; margin:10px 0}
+    .sub{font-size:15px; color:var(--muted)}
+    .cta-row{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      font-weight:700; border:1px solid var(--border); border-radius:14px; padding:13px 16px; cursor:pointer;
+      background:linear-gradient(180deg, rgba(30,155,255,.16), rgba(30,155,255,.06)); color:var(--text);
+      box-shadow:var(--shadow); transition: transform .12s ease;
+      min-height:44px; /* mobile touch target */
+    }
+    .btn:active{transform:scale(.98)}
+    .btn.primary{background:radial-gradient(120% 140% at 10% -10%, rgba(92,195,255,.22), rgba(30,155,255,.18)), linear-gradient(180deg, rgba(255,255,255,.04), transparent); border-color:rgba(30,155,255,.45)}
+
+    /* 1:1 image frames */
+    figure{margin:16px 0}
+    .art{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px dashed rgba(92,195,255,.35); border-radius:var(--radius); padding:12px; position:relative;
+    }
+    .art::after{
+      content:attr(data-prompt);
+      position:absolute; left:12px; right:12px; bottom:10px; font-size:11px; color:#88c9ff; opacity:.9;
+      display:block; border-top:1px dashed rgba(92,195,255,.35); padding-top:8px; line-height:1.35
+    }
+    /* Square placeholder or images inside figure */
+    .art .ph,
+    .art img{
+      width:100%;
+      aspect-ratio:1/1;   /* 👈 force 1:1 */
+      border-radius:12px;
+      display:block;
+      background:#0e1a2d;
+      color:#d6ecff;
+      display:flex; align-items:center; justify-content:center; text-align:center; padding:14px;
+      box-shadow: inset 0 0 28px rgba(30,155,255,.25), 0 16px 40px rgba(0,0,0,.35);
+      object-fit:cover; object-position:center;
+    }
+
+    /* Cards stack */
+    h2{font-size: clamp(22px, 5.4vw, 26px); line-height:1.2; margin:0 0 10px}
+    .kicker{color:var(--primary-2); font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:10px}
+    .cards{display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:1px solid var(--border); border-radius:14px; padding:14px}
+    .card h3{margin:0 0 6px; font-size:16px}
+    .mini{color:var(--muted); font-size:13px}
+
+    /* Quotes */
+    .quote{background:linear-gradient(180deg, rgba(30,155,255,.06), rgba(30,155,255,.02)); border:1px solid var(--border); border-radius:14px; padding:14px}
+    .stars{display:inline-flex; gap:2px; vertical-align:middle}
+    .star{width:14px; height:14px; fill:currentColor; color:#ffd76b; filter:drop-shadow(0 1px 3px rgba(255,215,107,.35))}
+
+    /* CTA */
+    .cta{background: radial-gradient(600px 300px at 50% -10%, rgba(30,155,255,.24), rgba(6,8,15,0) 60%),
+          linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+         border-top:1px solid var(--border)}
+    .panel{background:rgba(8,12,24,.6); border:1px solid rgba(92,195,255,.25); border-radius:18px; padding:16px; box-shadow:0 16px 60px rgba(30,155,255,.18)}
+    form{display:flex; flex-direction:column; gap:10px; margin-top:12px}
+    input[type=email]{background:#0a1324; border:1px solid rgba(92,195,255,.25); color:var(--text); padding:14px; border-radius:12px; font-size:16px}
+    .note{color:#9fcfff; font-size:12px; opacity:.9; margin-top:8px}
+
+    footer{padding:22px 0; color:#8fa3c9; font-size:11px; text-align:center}
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
+    }
+  </style>
+  <!-- Umami tracking -->
+  <script async src="https://us.umami.is/script.js" data-website-id="8b77927f-faae-4de2-b67a-ebe59df2c963"></script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="dot" aria-hidden></span> NeuroBlue</div>
+      <nav><a class="btn" href="#cta">Waitlist</a></nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="section hero">
+    <div class="wrap">
+      <div class="eyebrow">💙 NeuroBlue — The Next Evolution in Human Energy</div>
+      <h1>Think Deeper. Feel Sharper. Age Slower.</h1>
+      <p class="sub">Meet the breakthrough compound once used in neuroscience labs — now reimagined for daily mental performance and cellular renewal.</p>
+      <div class="cta-row">
+        <a href="#cta" class="btn primary" id="waitlist-btn">JOIN THE WAITLIST</a>
+        <a href="#cred" class="btn">Why it’s different</a>
+      </div>
+
+      <!-- 1:1 hero image -->
+      <figure class="art" aria-label="Suggested AI image"
+              data-prompt="Minimalist dark background with a glowing blue liquid droplet; 1:1 square.">
+        <div class="ph">AI image placeholder — hero droplet (1:1)</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="section" id="benefits">
+    <div class="wrap">
+      <div class="kicker">⚡ Benefit — Product Pitch</div>
+      <h2>Oxygen for the Mind. Power for the Cells.</h2>
+      <p class="sub">Originally developed for medicine. Rediscovered by high performers.</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Mitochondrial fuel</h3>
+          <p>Supports your cells’ natural energy factories for sustained clarity.</p>
+        </div>
+        <div class="card">
+          <h3>Neuro-enhancement</h3>
+          <p>May aid memory, mood, and long-term brain health.</p>
+        </div>
+        <div class="card">
+          <h3>Anti-aging potential</h3>
+          <p>Studied for unique redox properties that help defend against oxidative stress.</p>
+        </div>
+      </div>
+
+      <!-- 1:1 image -->
+      <figure class="art" data-prompt="Macro shot of a glowing blue capsule; 1:1 square.">
+        <div class="ph">AI image — capsule macro (1:1)</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="section" id="social">
+    <div class="wrap">
+      <div class="kicker">🌟 Social Proof</div>
+      <h2>From Lab Secret to Biohacker Essential</h2>
+
+      <div class="quote" style="margin-top:10px">
+        <div class="stars" aria-label="5 stars">
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+        </div>
+        <p style="margin:8px 0 0">“I’ve never felt mental energy like this — zero jitters, pure clarity.” — <strong>Alex R.</strong>, Data Scientist</p>
+      </div>
+
+      <div class="quote" style="margin-top:10px">
+        <div class="stars" aria-label="5 stars">
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+        </div>
+        <p style="margin:8px 0 0">“Focus and endurance doubled — this stuff is unreal.” — <strong>Kara T.</strong>, Endurance Athlete</p>
+      </div>
+
+      <!-- 1:1 image -->
+      <figure class="art" data-prompt="Blue-toned collage; 1:1 square.">
+        <div class="ph">AI image — collage (1:1)</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY -->
+  <section class="section" id="cred">
+    <div class="wrap">
+      <div class="kicker">🔬 Credibility Cues</div>
+      <h2>Backed by Decades of Mitochondrial Research</h2>
+      <p>Developed under the guidance of <strong>Dr. Henrik Vos</strong>, cellular metabolism specialist at the European Institute for Neuro-Energy.</p>
+      <p>Each capsule is formulated at micro-dose precision — the same compound explored in neurological and longevity research.</p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px">
+        <span class="mini" style="border:1px solid var(--border); background:rgba(255,255,255,.02); border-radius:999px; padding:8px 12px;">Pharma-grade Purity</span>
+        <span class="mini" style="border:1px solid var(--border); background:rgba(255,255,255,.02); border-radius:999px; padding:8px 12px;">cGMP Certified</span>
+        <span class="mini" style="border:1px solid var(--border); background:rgba(255,255,255,.02); border-radius:999px; padding:8px 12px;">Lab Verified</span>
+        <span class="mini" style="border:1px solid var(--border); background:rgba(255,255,255,.02); border-radius:999px; padding:8px 12px;">EU Research-Backed</span>
+      </div>
+
+      <!-- 1:1 image -->
+      <figure class="art" data-prompt="Lab portrait & badges; 1:1 square.">
+        <div class="ph">AI image — lab & badges (1:1)</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta" id="cta">
+    <div class="wrap">
+      <div class="panel">
+        <div class="kicker">🚀 Early Access</div>
+        <h2>Be Among the First to Experience NeuroBlue</h2>
+        <p class="sub">Join the early-access list and get notified when human trials meet lifestyle innovation.</p>
+        <form id="waitlist-form" novalidate>
+          <input type="email" id="email" placeholder="Your email address" aria-label="Email" required />
+          <button class="btn primary" type="submit" id="waitlist-btn-2">JOIN THE WAITLIST</button>
+        </form>
+        <div class="note">Limited early access — we’re testing demand before full release.</div>
+
+        <!-- 1:1 image -->
+        <figure class="art" style="margin-top:12px" data-prompt="Sleek cobalt-blue bottle; 1:1 square.">
+          <div class="ph">AI image — cobalt bottle (1:1)</div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>Disclaimer:</strong> This page is a demand-testing concept. Content is for informational purposes only and not medical advice. Methylene blue is an active compound; do not use without proper guidance.</p>
+      <p>© <span id="year"></span> NeuroBlue. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple form handler (no network)
+    const form = document.getElementById('waitlist-form');
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email');
+      const val = email.value.trim();
+      if(!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){
+        email.focus(); email.style.outline = '2px solid #ff6b6b';
+        setTimeout(()=> email.style.outline = 'none', 1000);
+        return;
+      }
+      const btn = form.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Added ✔';
+      const note = document.createElement('div');
+      note.className = 'note';
+      note.textContent = "Thanks! You're on the list. (Demo only — no data was sent.)";
+      form.after(note);
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Umami mapping for CTA buttons
+    function trackJoin(){ try { window.umami && window.umami.track('Join Waitlist Click'); } catch(_){} }
+    document.getElementById('waitlist-btn')?.addEventListener('click', trackJoin);
+    document.getElementById('waitlist-btn-2')?.addEventListener('click', trackJoin);
+  </script>
+</body>
+</html>
