@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroBlue — The Next Evolution in Human Energy</title>
+  <meta name="description" content="NeuroBlue: a radical one‑page concept to test demand around methylene blue for cognitive performance and cellular energy." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#06080f;          /* near-black */
+      --bg-2:#0b1220;        /* deep blue */
+      --text:#F2F6FF;        /* off-white */
+      --muted:#A7B4D6;       /* desaturated blue-gray */
+      --primary:#1e9bff;     /* cobalt/cyan */
+      --primary-2:#5cc3ff;   /* lighter glow */
+      --card:#0c1424;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,.45),0 0 60px rgba(30,155,255,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--text);
+      background: radial-gradient(1200px 800px at 70% -20%, rgba(30,155,255,.18), transparent 60%),
+                  radial-gradient(900px 600px at -10% 30%, rgba(92,195,255,.12), transparent 60%),
+                  linear-gradient(180deg, var(--bg), var(--bg-2));
+      background-attachment: fixed;
+      line-height:1.6;
+    }
+    a{color:var(--primary); text-decoration:none}
+    img{max-width:100%; display:block}
+    .wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+    header.nav{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(6,8,15,.85), rgba(6,8,15,.55));
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
+    .brand .dot{width:14px; height:14px; border-radius:50%; background:radial-gradient(circle at 35% 35%, var(--primary-2), var(--primary)); box-shadow:0 0 14px rgba(30,155,255,.9)}
+    .nav a.btn{padding:10px 14px; border:1px solid var(--border); border-radius:12px}
+
+    /* Hero */
+    .section{padding:80px 0; border-bottom:1px solid var(--border)}
+    .hero{padding:110px 0 80px; position:relative; overflow:hidden}
+    .grid{display:grid; grid-template-columns:1.2fr 1fr; gap:36px}
+    .eyebrow{color:var(--primary-2); font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase}
+    h1{font-size: clamp(36px, 6vw, 64px); line-height:1.08; margin:14px 0 14px}
+    .sub{font-size: clamp(16px, 2.4vw, 20px); color:var(--muted)}
+    .hero .cta-row{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      font-weight:700; border:1px solid var(--border); border-radius:14px; padding:14px 18px; cursor:pointer;
+      background:linear-gradient(180deg, rgba(30,155,255,.16), rgba(30,155,255,.06)); color:var(--text);
+      box-shadow:var(--shadow); transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 16px 40px rgba(30,155,255,.18)}
+    .btn.primary{background:radial-gradient(120% 140% at 10% -10%, rgba(92,195,255,.22), rgba(30,155,255,.18)), linear-gradient(180deg, rgba(255,255,255,.04), transparent); border-color:rgba(30,155,255,.45)}
+
+    /* Art frames with prompts */
+    .art{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px dashed rgba(92,195,255,.35); border-radius:16px; padding:18px; position:relative;
+    }
+    .art::after{
+      content:attr(data-prompt);
+      position:absolute; left:18px; right:18px; bottom:12px; font-size:12px; color:#88c9ff; opacity:.9;
+      display:block; border-top:1px dashed rgba(92,195,255,.35); padding-top:10px; line-height:1.4
+    }
+    .art .ph{
+      height:320px; border-radius:12px; background:radial-gradient(120% 120% at 50% 20%, rgba(92,195,255,.25), rgba(14,26,45,.75)),
+                 linear-gradient(120deg, rgba(30,155,255,.25), rgba(30,155,255,.05) 60%);
+      box-shadow: inset 0 0 40px rgba(30,155,255,.25), 0 30px 60px rgba(0,0,0,.35);
+      display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; color:#d6ecff;
+    }
+
+    /* Benefit */
+    h2{font-size: clamp(28px, 4.6vw, 40px); line-height:1.12; margin:0 0 12px}
+    .kicker{color:var(--primary-2); font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:12px}
+    .cards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:1px solid var(--border); border-radius:16px; padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 8px; font-size:18px}
+    .mini{color:var(--muted); font-size:14px}
+
+    /* Social proof */
+    .quote{background:linear-gradient(180deg, rgba(30,155,255,.06), rgba(30,155,255,.02)); border:1px solid var(--border); border-radius:16px; padding:18px}
+    .stars{display:inline-flex; gap:2px; vertical-align:middle}
+    .star{width:16px; height:16px; fill:currentColor; color:#ffd76b; filter:drop-shadow(0 1px 3px rgba(255,215,107,.35))}
+
+    /* Credibility */
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .badge{border:1px solid var(--border); background:rgba(255,255,255,.02); border-radius:999px; padding:8px 12px; font-size:13px; color:#cfe9ff}
+
+    /* CTA */
+    .cta{background: radial-gradient(800px 400px at 50% -10%, rgba(30,155,255,.24), rgba(6,8,15,0) 60%),
+          linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+         border-top:1px solid var(--border)}
+    .cta .panel{background:rgba(8,12,24,.6); border:1px solid rgba(92,195,255,.25); border-radius:20px; padding:24px; box-shadow:0 16px 60px rgba(30,155,255,.18)}
+    form{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    input[type=email]{flex:1; min-width:220px; background:#0a1324; border:1px solid rgba(92,195,255,.25); color:var(--text); padding:14px 14px; border-radius:12px}
+    .note{color:#9fcfff; font-size:13px; opacity:.9; margin-top:10px}
+
+    footer{padding:32px 0; color:#8fa3c9; font-size:12px; text-align:center}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr;}
+      .cards{grid-template-columns:1fr}
+      .art .ph{height:220px}
+    }
+
+    /* Tiny polish */
+    .fade-in{opacity:0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease}
+    .fade-in.reveal{opacity:1; transform:none}
+  </style>
+<!-- 👇 Umami tracking script -->
+<script async src="https://us.umami.is/script.js" data-website-id="8b77927f-faae-4de2-b67a-ebe59df2c963"></script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="dot" aria-hidden></span> NeuroBlue</div>
+      <nav>
+        <a class="btn" href="#cta">Join the Waitlist</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="section hero">
+    <div class="wrap grid">
+      <div>
+        <div class="eyebrow">💙 NeuroBlue — The Next Evolution in Human Energy</div>
+        <h1>Think Deeper. Feel Sharper. Age Slower.</h1>
+        <p class="sub">Meet the breakthrough compound once used in neuroscience labs — now reimagined for daily mental performance and cellular renewal.</p>
+        <div class="cta-row">
+          <a href="#cta" class="btn primary">JOIN THE WAITLIST</a>
+          <a href="#cred" class="btn">Why it’s different</a>
+        </div>
+      </div>
+      <figure class="art" aria-label="Suggested AI image placeholder"
+              data-prompt="Minimalist dark background with a glowing blue liquid droplet suspended mid-air, emitting faint neural-circuit light patterns. Clean, futuristic, high-contrast aesthetic.">
+        <div class="ph">AI image placeholder — hero droplet</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- BENEFIT / PRODUCT PITCH -->
+  <section class="section" id="benefits">
+    <div class="wrap">
+      <div class="kicker">⚡ Benefit — Product Pitch</div>
+      <h2>Oxygen for the Mind. Power for the Cells.</h2>
+      <p class="sub">Originally developed for medicine. Rediscovered by high performers.</p>
+
+      <div class="cards">
+        <div class="card fade-in">
+          <h3>Mitochondrial fuel</h3>
+          <p>Supports your cells’ natural energy factories for sustained clarity.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Neuro‑enhancement</h3>
+          <p>May aid memory, mood, and long‑term brain health.</p>
+        </div>
+        <div class="card fade-in">
+          <h3>Anti‑aging potential</h3>
+          <p>Studied for unique redox properties that help defend against oxidative stress.</p>
+        </div>
+      </div>
+
+      <figure class="art" style="margin-top:18px" data-prompt="Macro shot of a glowing blue capsule dissolving into light — evokes ‘science meets power’.">
+        <div class="ph">AI image placeholder — capsule macro</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="section" id="social">
+    <div class="wrap grid" style="grid-template-columns:1fr 1fr">
+      <div>
+        <div class="kicker">🌟 Social Proof</div>
+        <h2>From Lab Secret to Biohacker Essential</h2>
+        <div class="quote" style="margin-top:12px">
+          <div class="stars" aria-label="5 stars">
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          </div>
+          <p style="margin:10px 0 0">“I’ve never felt mental energy like this — zero jitters, pure clarity.” — <strong>Alex R.</strong>, Data Scientist</p>
+        </div>
+        <div class="quote" style="margin-top:10px">
+          <div class="stars" aria-label="5 stars">
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          </div>
+          <p style="margin:10px 0 0">“Focus and endurance doubled — this stuff is unreal.” — <strong>Kara T.</strong>, Endurance Athlete</p>
+        </div>
+        <div class="quote" style="margin-top:10px">
+          <div class="stars" aria-label="5 stars">
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.3 4.6 1.6 7-6.3-3.7L6 20.8l1.6-7L2.3 9.2l7.1-.6z"/></svg>
+          </div>
+          <p style="margin:10px 0 0">“Feels like my brain finally has oxygen.” — <strong>Dr. Ben S.</strong>, Neurosurgeon</p>
+        </div>
+      </div>
+      <figure class="art" data-prompt="Collage of intelligent‑looking professionals in crisp, blue‑toned lighting with subtle glow — emphasising clarity and confidence.">
+        <div class="ph">AI image placeholder — blue‑toned collage</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY -->
+  <section class="section" id="cred">
+    <div class="wrap grid" style="grid-template-columns:1fr 1fr">
+      <div>
+        <div class="kicker">🔬 Credibility Cues</div>
+        <h2>Backed by Decades of Mitochondrial Research</h2>
+        <p>Developed under the guidance of <strong>Dr. Henrik Vos</strong>, cellular metabolism specialist at the European Institute for Neuro‑Energy.</p>
+        <p>Each capsule is formulated at micro‑dose precision — the same compound explored in neurological and longevity research.</p>
+        <div class="badges">
+          <span class="badge">Pharma‑grade Purity</span>
+          <span class="badge">cGMP Certified</span>
+          <span class="badge">Lab Verified</span>
+          <span class="badge">EU Research‑Backed</span>
+        </div>
+      </div>
+      <figure class="art" data-prompt="Portrait of a scientist in a dark lab with blue ambient lighting, microscope and glowing samples; below, clean certification logos: ‘Lab Verified’, ‘Pharma Grade’, ‘EU Research‑Backed’.">
+        <div class="ph">AI image placeholder — lab portrait & badges</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta" id="cta">
+    <div class="wrap">
+      <div class="panel">
+        <div class="kicker">🚀 Early Access</div>
+        <h2>Be Among the First to Experience NeuroBlue</h2>
+        <p class="sub">Join the early‑access list and get notified when human trials meet lifestyle innovation.</p>
+        <form id="waitlist-form" novalidate>
+          <input type="email" id="email" placeholder="Your email address" aria-label="Email" required />
+          <button class="btn primary" type="submit" id="waitlist-btn">JOIN THE WAITLIST</button>
+        </form>
+        <div class="note">Limited early access — we’re testing demand before full release.</div>
+        <figure class="art" style="margin-top:18px" data-prompt="Minimalist image of sleek cobalt‑blue bottle glowing softly in darkness, surrounded by faint geometric light grids — evokes ‘the future of cognition’.">
+          <div class="ph">AI image placeholder — cobalt bottle</div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>Disclaimer:</strong> This page is a demand‑testing concept. Content is for informational purposes only and not medical advice. Methylene blue is an active compound; do not use without proper guidance.</p>
+      <p>© <span id="year"></span> NeuroBlue. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('reveal') })
+    }, {threshold: .18});
+    document.querySelectorAll('.fade-in').forEach(el=>io.observe(el))
+
+    // Waitlist form (mock)
+    const form = document.getElementById('waitlist-form');
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email');
+      const val = email.value.trim();
+      if(!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){
+        email.focus(); email.style.outline = '2px solid #ff6b6b';
+        setTimeout(()=> email.style.outline = 'none', 1000);
+        return;
+      }
+      // Simulate success without network request
+      const btn = form.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Added ✔';
+      const note = document.createElement('div');
+      note.className = 'note';
+      note.textContent = 'Thanks! You\'re on the list. (Demo only — no data was sent.)';
+      form.after(note);
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  // Umami mapping for CTA button
+const waitlistBtn = document.getElementById('waitlist-btn');
+waitlistBtn?.addEventListener('click', () => {
+  try { window.umami && window.umami.track('Join Waitlist Click'); } catch (_) {}
+});
+
+  </script>
+</body>
+</html>
