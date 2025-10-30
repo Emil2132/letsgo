@@ -1,0 +1,183 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>undefined</title>
+  <meta name="description" content="undefined" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070b0a; --bg-mid:#0a1411; --bg-2:#06080f; --text:#F2F6FF; --muted:#A7B4D6;
+      --primary:#1e9bff; --primary-2:#5cc3ff; --card:#0c1424;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,.45),0 0 60px rgba(30,155,255,.08);
+      --radius:16px;
+      --space:16px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--text);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-mid) 50%, var(--bg-2) 100%);
+      background-attachment: fixed;
+      background-repeat:no-repeat; background-size:100% 100%;
+      line-height:1.6;
+      position:relative;
+      overflow-x:hidden;
+      isolation:isolate;
+    }
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      opacity:.015;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.9"/></svg>');
+      image-rendering:pixelated;
+    }
+    a{color:var(--primary); text-decoration:none}
+    .wrap{max-width:420px; margin:0 auto; padding:0 14px}
+    header.nav{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(6,8,15,.9), rgba(6,8,15,.6));
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; font-size:15px}
+    .brand .dot{width:12px; height:12px; border-radius:50%; background:radial-gradient(circle at 35% 35%, var(--primary-2), var(--primary)); box-shadow:0 0 12px rgba(30,155,255,.9)}
+    .nav a.btn{padding:10px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px}
+    .section{padding:28px 0; border-bottom:1px solid var(--border)}
+    .hero{padding:36px 0 28px}
+    .eyebrow{color:var(--primary-2); font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase}
+    h1{font-size: clamp(26px, 6.5vw, 30px); line-height:1.15; margin:10px 0}
+    .sub{font-size:15px; color:var(--muted)}
+    .cta-row{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      font-weight:700; border:1px solid var(--border); border-radius:14px; padding:13px 16px; cursor:pointer;
+      background:linear-gradient(180deg, rgba(30,155,255,.16), rgba(30,155,255,.06)); color:var(--text);
+      box-shadow:var(--shadow); transition: transform .12s ease;
+      min-height:44px;
+    }
+    .btn:active{transform:scale(.98)}
+    .btn.primary{background:radial-gradient(120% 140% at 10% -10%, rgba(92,195,255,.22), rgba(30,155,255,.18)), linear-gradient(180deg, rgba(255,255,255,.04), transparent); border-color:rgba(30,155,255,.45)}
+    figure{margin:16px 0}
+    .art{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:none; border-radius:var(--radius); padding:0; position:relative;}
+    .art img{width:100%; aspect-ratio:1/1; border-radius:12px; display:block; background:#0e1a2d; object-fit:cover; object-position:center;}
+    h2{font-size: clamp(22px, 5.4vw, 26px); line-height:1.2; margin:0 0 10px}
+    .kicker{color:var(--primary-2); font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:10px}
+    .cards{display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:1px solid var(--border); border-radius:14px; padding:14px}
+    .card h3{margin:0 0 6px; font-size:16px}
+    .mini{color:var(--muted); font-size:13px}
+    .quote{background:linear-gradient(180deg, rgba(30,155,255,.06), rgba(30,155,255,.02)); border:1px solid var(--border); border-radius:14px; padding:14px}
+    .cta{background: transparent; border-top:1px solid var(--border)}
+    .panel{background:rgba(8,12,24,.6); border:1px solid rgba(92,195,255,.25); border-radius:18px; padding:16px; box-shadow:0 16px 60px rgba(30,155,255,.18)}
+    form{display:flex; flex-direction:column; gap:10px; margin-top:12px}
+    input[type=email]{background:#0a1324; border:1px solid rgba(92,195,255,.25); color:var(--text); padding:14px; border-radius:12px; font-size:16px}
+    .note{color:#9fcfff; font-size:12px; opacity:.9; margin-top:8px}
+    footer{padding:22px 0; color:#8fa3c9; font-size:11px; text-align:center}
+  </style>
+  <script async src="https://us.umami.is/script.js" data-website-id="8b77927f-faae-4de2-b67a-ebe59df2c963"></script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="dot"></span> Reflora Labs</div>
+      <nav><a class="btn" href="#cta">Get the kit</a></nav>
+    </div>
+  </header>
+
+  <section class="section hero">
+    <div class="wrap">
+      <div class="eyebrow">Designed for life after antibiotics</div>
+      <h1>Restore your gut, rebuild your defenses—step by step</h1>
+      <p class="sub">A three-phase protocol to help rebalance microbiome and immune function after antibiotics, with clinically aligned ingredients and simple daily guidance.</p>
+      <div class="cta-row">
+        <a href="#cta" class="btn primary" id="waitlist-btn">Start your recovery</a>
+        <a href="#cred" class="btn">See how it works</a>
+      </div>
+      <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761826775/xyyumpzgnqolgwxu3kzz.png" alt="Hero image" /></figure>
+    </div>
+  </section>
+
+  <section class="section" id="benefits">
+    <div class="wrap">
+      <div class="kicker">Why recovery needs a protocol</div>
+      <h2>A complete system for life after antibiotics</h2>
+      <p class="sub">Three precisely timed phases that support microbiome balance, barrier repair, and immune resilience—without guesswork or conflicting supplements.</p>
+      <div class="cards">
+        <div class="card"><h3>Phase 1: Re‑inoculate & protect</h3><p>High-potency, diverse probiotics with spore-formers plus a gentle prebiotic to seed and shield while antibiotics are present.</p></div>
+        <div class="card"><h3>Phase 2: Repair & seal</h3><p>L‑glutamine, zinc carnosine, collagen, and soothing botanicals to help restore the intestinal barrier and calm irritation.</p></div>
+        <div class="card"><h3>Phase 3: Rebalance & boost</h3><p>Ongoing probiotic and prebiotic support with postbiotics and immune modulators like vitamin D, zinc, and mushroom beta‑glucans to consolidate gains and build resilience.</p></div>
+      </div>
+      <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761826784/tqjhh97likobtupj8wux.png" alt="Benefit image" /></figure>
+    </div>
+  </section>
+
+  <section class="section" id="social">
+    <div class="wrap">
+      <div class="kicker">Proof in real life</div>
+      <h2>What recovery feels like</h2>
+      <div class="quote"><p>Two weeks in, my digestion steadied and my energy returned.</p></div>
+      <div class="quote"><p>The step‑by‑step kit removed confusion after antibiotics—clear and gentle.</p></div>
+      <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761826792/rozyrnvykphigrlujxm5.png" alt="Social image" /></figure>
+    </div>
+  </section>
+
+  <section class="section" id="cred">
+    <div class="wrap">
+      <div class="kicker">Formulated with rigor</div>
+      <h2>Built with clinicians and microbiome researchers</h2>
+      <p>Each phase is informed by current evidence on microbiome balance, barrier integrity, and immune signaling, with transparent dosing and purposeful exclusions.</p>
+      <p>Produced in GMP‑certified facilities and third‑party tested for purity and potency. No artificial colors, flavors, or unnecessary fillers.</p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px">
+        <span class="mini">Clinician‑informed</span>
+        <span class="mini">GMP manufactured</span>
+        <span class="mini">Third‑party tested</span>
+        <span class="mini">Transparent dosing</span>
+      </div>
+      <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761826800/rkysx6ywerrpg11rccii.png" alt="Credibility image" /></figure>
+    </div>
+  </section>
+
+  <section class="section cta" id="cta">
+    <div class="wrap">
+      <div class="panel">
+        <div class="kicker">Your recovery, simplified</div>
+        <h2>Begin your 8‑week restoration protocol today</h2>
+        <p class="sub">Ships as a complete kit with simple daily steps. One decision, everything you need.</p>
+        <form id="waitlist-form" novalidate>
+          <input type="email" id="email" placeholder="Your email address" required />
+          <button class="btn primary" type="submit" id="waitlist-btn-2">Get the kit</button>
+        </form>
+        <div class="note">Free shipping and a 30‑day satisfaction promise.</div>
+        <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761826809/sendqbd32ozipizbkjzu.png" alt="CTA image" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>This page is a demand‑testing concept for research and education only. It is not medical or commercial advice, nor a diagnosis, treatment, or offer to sell any product.</p>
+      <p>© <span id="year"></span> Reflora Labs. © 2025 Reflora Labs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const form=document.getElementById('waitlist-form');
+    form?.addEventListener('submit',e=>{
+      e.preventDefault();
+      const email=document.getElementById('email');
+      if(!email.value.trim().match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/)){
+        email.style.outline='2px solid #ff6b6b';
+        setTimeout(()=>email.style.outline='none',1000);
+        return;
+      }
+      form.querySelector('button').textContent='Added ✔';
+    });
+    document.getElementById('year').textContent=new Date().getFullYear();
+    function trackJoin(){try{window.umami&&window.umami.track('Join Waitlist Click')}catch{}}
+    document.getElementById('waitlist-btn')?.addEventListener('click',trackJoin);
+    document.getElementById('waitlist-btn-2')?.addEventListener('click',trackJoin);
+  </script>
+</body>
+</html>
