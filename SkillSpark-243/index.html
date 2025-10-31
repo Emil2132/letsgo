@@ -1,0 +1,183 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>undefined</title>
+  <meta name="description" content="undefined" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070b0a; --bg-mid:#0a1411; --bg-2:#06080f; --text:#F2F6FF; --muted:#A7B4D6;
+      --primary:#1e9bff; --primary-2:#5cc3ff; --card:#0c1424;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,.45),0 0 60px rgba(30,155,255,.08);
+      --radius:16px;
+      --space:16px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--text);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-mid) 50%, var(--bg-2) 100%);
+      background-attachment: fixed;
+      background-repeat:no-repeat; background-size:100% 100%;
+      line-height:1.6;
+      position:relative;
+      overflow-x:hidden;
+      isolation:isolate;
+    }
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      opacity:.015;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.9"/></svg>');
+      image-rendering:pixelated;
+    }
+    a{color:var(--primary); text-decoration:none}
+    .wrap{max-width:420px; margin:0 auto; padding:0 14px}
+    header.nav{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(6,8,15,.9), rgba(6,8,15,.6));
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; font-size:15px}
+    .brand .dot{width:12px; height:12px; border-radius:50%; background:radial-gradient(circle at 35% 35%, var(--primary-2), var(--primary)); box-shadow:0 0 12px rgba(30,155,255,.9)}
+    .nav a.btn{padding:10px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px}
+    .section{padding:28px 0; border-bottom:1px solid var(--border)}
+    .hero{padding:36px 0 28px}
+    .eyebrow{color:var(--primary-2); font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase}
+    h1{font-size: clamp(26px, 6.5vw, 30px); line-height:1.15; margin:10px 0}
+    .sub{font-size:15px; color:var(--muted)}
+    .cta-row{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      font-weight:700; border:1px solid var(--border); border-radius:14px; padding:13px 16px; cursor:pointer;
+      background:linear-gradient(180deg, rgba(30,155,255,.16), rgba(30,155,255,.06)); color:var(--text);
+      box-shadow:var(--shadow); transition: transform .12s ease;
+      min-height:44px;
+    }
+    .btn:active{transform:scale(.98)}
+    .btn.primary{background:radial-gradient(120% 140% at 10% -10%, rgba(92,195,255,.22), rgba(30,155,255,.18)), linear-gradient(180deg, rgba(255,255,255,.04), transparent); border-color:rgba(30,155,255,.45)}
+    figure{margin:16px 0}
+    .art{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:none; border-radius:var(--radius); padding:0; position:relative;}
+    .art img{width:100%; aspect-ratio:1/1; border-radius:12px; display:block; background:#0e1a2d; object-fit:cover; object-position:center;}
+    h2{font-size: clamp(22px, 5.4vw, 26px); line-height:1.2; margin:0 0 10px}
+    .kicker{color:var(--primary-2); font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:10px}
+    .cards{display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:1px solid var(--border); border-radius:14px; padding:14px}
+    .card h3{margin:0 0 6px; font-size:16px}
+    .mini{color:var(--muted); font-size:13px}
+    .quote{background:linear-gradient(180deg, rgba(30,155,255,.06), rgba(30,155,255,.02)); border:1px solid var(--border); border-radius:14px; padding:14px}
+    .cta{background: transparent; border-top:1px solid var(--border)}
+    .panel{background:rgba(8,12,24,.6); border:1px solid rgba(92,195,255,.25); border-radius:18px; padding:16px; box-shadow:0 16px 60px rgba(30,155,255,.18)}
+    form{display:flex; flex-direction:column; gap:10px; margin-top:12px}
+    input[type=email]{background:#0a1324; border:1px solid rgba(92,195,255,.25); color:var(--text); padding:14px; border-radius:12px; font-size:16px}
+    .note{color:#9fcfff; font-size:12px; opacity:.9; margin-top:8px}
+    footer{padding:22px 0; color:#8fa3c9; font-size:11px; text-align:center}
+  </style>
+  <script async src="https://us.umami.is/script.js" data-website-id="8b77927f-faae-4de2-b67a-ebe59df2c963"></script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="dot"></span> SkillSpark</div>
+      <nav><a class="btn" href="#cta">Start Assessment</a></nav>
+    </div>
+  </header>
+
+  <section class="section hero">
+    <div class="wrap">
+      <div class="eyebrow">AI-personalized creative skill kits</div>
+      <h1>Your creative path, curated by AI</h1>
+      <p class="sub">Receive a tailored kit and dynamic lessons built around your style, goals, and pace, for watercolor, sketching, digital art, and more.</p>
+      <div class="cta-row">
+        <a href="#cta" class="btn primary" id="waitlist-btn">Start Assessment</a>
+        <a href="#cred" class="btn">See Sample Kits</a>
+      </div>
+      <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761915670/gjogs6pktq7oscxiywwt.png" alt="Hero image" /></figure>
+    </div>
+  </section>
+
+  <section class="section" id="benefits">
+    <div class="wrap">
+      <div class="kicker">Why SkillSpark</div>
+      <h2>Clarity, momentum, and materials, delivered in perfect sync</h2>
+      <p class="sub">Skip the guesswork. Our AI calibrates tools and lessons to your level, giving you steady progress and fewer unused supplies.</p>
+      <div class="cards">
+        <div class="card"><h3>Know your creative fingerprint</h3><p>Answer a five-minute questionnaire, share inspirations, and upload past work. Our model maps your learning style, goals, and gaps to design a unique profile.</p></div>
+        <div class="card"><h3>The right tools, not more tools</h3><p>Receive a kit precisely matched to your medium and level—papers, pigments, nibs, or tablet add-ons. No clutter. Just materials that accelerate practice.</p></div>
+        <div class="card"><h3>Lessons that evolve with you</h3><p>Follow a tailored path of short videos, exercises, and prompts. Get AI feedback on uploads, and watch the curriculum adapt as your skills deepen.</p></div>
+      </div>
+      <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761915685/nbdjyp86t9fyi6gd4ovg.png" alt="Benefit image" /></figure>
+    </div>
+  </section>
+
+  <section class="section" id="social">
+    <div class="wrap">
+      <div class="kicker">What learners say</div>
+      <h2>From overwhelmed to in flow</h2>
+      <div class="quote"><p>I stopped second-guessing supplies and finally built a routine. The adaptive prompts keep me moving without burnout. — Mira, urban sketching</p></div>
+      <div class="quote"><p>The kit nailed my style, and the feedback turned mistakes into clarity. I look forward to practice again. — Jonas, digital painting</p></div>
+      <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761915695/jkilgmqflqzmddh8qyng.png" alt="Social image" /></figure>
+    </div>
+  </section>
+
+  <section class="section" id="cred">
+    <div class="wrap">
+      <div class="kicker">Built for real progress</div>
+      <h2>An integrated system, refined by data</h2>
+      <p>We combine curated materials, pedagogical design, and responsible AI to reduce friction and increase time spent creating.</p>
+      <p>Content is reviewed with artists and educators. Data is encrypted, opt-in, and used only to improve your experience.</p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px">
+        <span class="mini">Personalized AI</span>
+        <span class="mini">Curated Materials</span>
+        <span class="mini">Adaptive Curriculum</span>
+        <span class="mini">Expert Guidance</span>
+      </div>
+      <figure class="art"><img src="https://res.cloudinary.com/dvcnslbfz/image/upload/v1761915703/afebbqvcanedzkhpes5g.png" alt="Credibility image" /></figure>
+    </div>
+  </section>
+
+  <section class="section cta" id="cta">
+    <div class="wrap">
+      <div class="panel">
+        <div class="kicker">Get started</div>
+        <h2>Begin with a five-minute assessment</h2>
+        <p class="sub">See your personalized kit preview and first-week plan before you buy.</p>
+        <form id="waitlist-form" novalidate>
+          <input type="email" id="email" placeholder="Your email address" required />
+          <button class="btn primary" type="submit" id="waitlist-btn-2">Start Assessment</button>
+        </form>
+        <div class="note">Ships to US, UK, and EU. Digital access worldwide.</div>
+        <figure class="art"><img src="undefined" alt="CTA image" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>This page is a demand-testing concept and does not constitute medical or commercial advice. Product details are illustrative and subject to change.</p>
+      <p>© <span id="year"></span> SkillSpark. © 2025 SkillSpark. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const form=document.getElementById('waitlist-form');
+    form?.addEventListener('submit',e=>{
+      e.preventDefault();
+      const email=document.getElementById('email');
+      if(!email.value.trim().match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/)){
+        email.style.outline='2px solid #ff6b6b';
+        setTimeout(()=>email.style.outline='none',1000);
+        return;
+      }
+      form.querySelector('button').textContent='Added ✔';
+    });
+    document.getElementById('year').textContent=new Date().getFullYear();
+    function trackJoin(){try{window.umami&&window.umami.track('Join Waitlist Click')}catch{}}
+    document.getElementById('waitlist-btn')?.addEventListener('click',trackJoin);
+    document.getElementById('waitlist-btn-2')?.addEventListener('click',trackJoin);
+  </script>
+</body>
+</html>
